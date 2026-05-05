@@ -21,7 +21,7 @@ const Main = () => {
         <div className="grid md:grid-cols-2 gap-6">
           
           {/* Card 1 */}
-          <div className="border rounded-xl p-6 hover:border-blue-500! transition">
+          <div className="border rounded-xl p-6 hover:border-blue-500! hover:bg-gray-100! transition">
             <FaSearch className="text-3xl text-blue-500 mb-4" />
             <h3 className="text-lg font-semibold mb-2">Powerful Search</h3>
             <p className="text-gray-500 text-sm">
@@ -30,7 +30,7 @@ const Main = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="border rounded-xl p-6 hover:border-blue-500! transition">
+          <div className="border rounded-xl p-6 hover:border-blue-500! hover:bg-gray-100! transition">
             <FaStar className="text-3xl text-yellow-500 mb-4" />
             <h3 className="text-lg font-semibold mb-2">Curated Opportunities</h3>
             <p className="text-gray-500 text-sm">
@@ -39,7 +39,7 @@ const Main = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="border rounded-xl p-6 hover:border-blue-500! transition">
+          <div className="border rounded-xl p-6 hover:border-blue-500! hover:bg-gray-100! transition">
             <Sparkles className="text-3xl text-pink-500 mb-4" />
             <h3 className="text-lg font-semibold mb-2">User-Friendly Interface</h3>
             <p className="text-gray-500 text-sm">
@@ -48,7 +48,7 @@ const Main = () => {
           </div>
 
           {/* Card 4 */}
-          <div className="border rounded-xl p-6 hover:border-blue-500! transition">
+          <div className="border rounded-xl p-6 hover:border-blue-500! hover:bg-gray-100! transition">
             <FaBolt className="text-3xl text-orange-500 mb-4" />
             <h3 className="text-lg font-semibold mb-2">Real-Time Updates</h3>
             <p className="text-gray-500 text-sm">

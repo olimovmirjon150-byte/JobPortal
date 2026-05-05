@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Hero = () => {
   return (
     <section className="bg-white py-16 px-4 font-sans">
@@ -34,10 +36,12 @@ const Hero = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
+          <Link href="/jobs">
           <button className="bg-blue-500 text-white px-8 py-3 rounded-md! font-semibold hover:bg-blue-700! transition-all">
             Browse All Jobs
           </button>
-          <button className="bg-white text-slate-900 border border-slate-200 px-8 py-3 rounded-md! font-semibold hover:bg-slate-50 transition-all">
+          </Link>
+          <button className="bg-white text-slate-900 border border-slate-200 px-8 py-3 rounded-md! font-semibold hover:bg-orange-700! hover:text-white transition-all">
             Post a Job
           </button>
         </div>
