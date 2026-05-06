@@ -20,12 +20,12 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-3">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <Link href="/jobs">
+              <Link className="no-underline!" href="/jobs">
               <li className="text-gray-400 hover:text-orange-700! cursor-pointer">
                 Browse Jobs
               </li>
               </Link>
-              <Link href="/admin/login">
+              <Link className="no-underline!" href="/admin/login">
               <li className="text-gray-400 hover:text-orange-700! cursor-pointer">
                 Post a Job
               </li>

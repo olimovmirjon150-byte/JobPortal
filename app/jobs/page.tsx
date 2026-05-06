@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "../_components/Header";
 
 const Page = () => {
@@ -29,7 +30,7 @@ const Page = () => {
           <select className="w-full border rounded-lg px-3 py-2">
             <option>All Categories</option>
           </select>
-          <button className="w-full bg-blue-600 text-white py-2 rounded mt-4 hover:bg-blue-700 transition-all">
+          <button type="reset" className="w-full bg-blue-600 text-white py-2 rounded mt-4 hover:bg-blue-700 transition-all">
             Reset Filters
           </button>
         </div>
@@ -64,10 +65,11 @@ const Page = () => {
                 <button className="text-xs! rounded border p-1">5+ years experience</button>
                 <button className="text-xs! rounded border p-1">+1 more</button>
             </div>
-
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all">
+            <Link href="/jobDetails">
+            <button className="bg-blue-600 w-100 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all">
               View Details
             </button>
+            </Link>
           </div>
         </main>
       </div>

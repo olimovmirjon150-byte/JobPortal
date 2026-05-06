@@ -7,10 +7,10 @@ const Header = () => {
         <div className="flex items-center justify-center gap-220">
             <img src="/logo.svg" alt="JobPortal Logo" width={160} />
             <div className="flex justify-center items-center gap-4">
-              <Link href="/">
+              <Link className="no-underline!" href="/">
                 <p className="mt-2 cursor-pointer hover:text-blue-800!">Home</p>
               </Link>
-              <Link href="/jobs">
+              <Link className="no-underline!" href="/jobs">
                 <p className="mt-2 cursor-pointer hover:text-blue-800!">Jobs</p>
               </Link>
               <Link href="/admin/login">
