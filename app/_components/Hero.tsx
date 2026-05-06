@@ -41,9 +41,11 @@ const Hero = () => {
             Browse All Jobs
           </button>
           </Link>
+          <Link href="/admin/login">
           <button className="bg-white text-slate-900 border border-slate-200 px-8 py-3 rounded-md! font-semibold hover:bg-orange-700! hover:text-white transition-all">
             Post a Job
           </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8">

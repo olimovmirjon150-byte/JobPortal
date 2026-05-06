@@ -13,7 +13,7 @@ const Header = () => {
               <Link href="/jobs">
                 <p className="mt-2 cursor-pointer hover:text-blue-800!">Jobs</p>
               </Link>
-              <Link href="/login">
+              <Link href="/admin/login">
                 <Button className="px-3 py-3 rounded-3 hover:bg-blue-700! transition-all">Post a Job</Button>
               </Link>
             </div>

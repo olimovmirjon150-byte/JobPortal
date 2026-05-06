@@ -23,9 +23,11 @@ const Last = () => {
             Explore Jobs
           </button>
           </Link>
+          <Link href="/admin/login">
           <button className="border bg-blue-600 text-white px-6 py-3 rounded-xl! hover:bg-orange-700! hover:text-blue-900 transition">
             Post a Job
           </button>
+          </Link>
         </div>
 
       </div>
