@@ -19,14 +19,18 @@ export default function AdminLoyout({
               <span className="text-xl">📋</span>
               <span className="font-medium">Jobs</span>
             </div>
-            <div className="flex items-center gap-3 cursor-pointer hover:text-blue-400 transition">
+            <Link href="/admin/create">
+            <div className="mb-4 flex items-center gap-3 cursor-pointer hover:text-blue-400 transition">
               <span className="text-xl">➕</span>
               <span className="font-medium">Create Job</span>
             </div>
+            </Link>
+            <Link href="/admin/aplications">
             <div className="flex items-center gap-3 cursor-pointer hover:text-blue-400 transition">
               <span className="text-xl">📩</span>
               <span className="font-medium">Applications</span>
             </div>
+            </Link>
           </nav>
         </div>
 
