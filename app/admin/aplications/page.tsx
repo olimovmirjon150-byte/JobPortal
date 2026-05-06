@@ -1,4 +1,4 @@
-const Applications = () => {
+const page = () => {
   return (
     <section className="py-12 bg-gray-50 min-h-screen">
       <div className="max-w-6xl mx-auto px-4">
@@ -41,11 +41,11 @@ const Applications = () => {
                 <td className="px-6 py-4 text-sm text-gray-600">
                   Apr 30, 2026, 08:51 AM
                 </td>
-                <td className="px-6 py-4 text-sm">
-                  <button className="text-blue-600 hover:underline mr-4">
+                <td className="px-6 py-4 text-sm flex justify-center items-center gap-2">
+                  <button className="px-3 py-2 rounded-md! transition-all hover:bg-orange-700 hover:text-white">
                     View
                   </button>
-                  <button className="text-red-500 hover:underline">
+                  <button className="px-3 py-2 rounded-md! transition-all text-orange-700 hover:bg-gray-200">
                     Delete
                   </button>
                 </td>
@@ -59,4 +59,4 @@ const Applications = () => {
   );
 };
 
-export default Applications;
+export default page;
