@@ -15,10 +15,12 @@ export default function AdminLoyout({
             Admin Menu
           </p>
           <nav className="space-y-6">
-            <div className="flex items-center gap-3 cursor-pointer hover:text-blue-400 transition">
+            <Link href="/admin/jobs">
+            <div className="mb-4 flex items-center gap-3 cursor-pointer hover:text-blue-400 transition">
               <span className="text-xl">📋</span>
               <span className="font-medium">Jobs</span>
             </div>
+            </Link>
             <Link href="/admin/create">
             <div className="mb-4 flex items-center gap-3 cursor-pointer hover:text-blue-400 transition">
               <span className="text-xl">➕</span>
