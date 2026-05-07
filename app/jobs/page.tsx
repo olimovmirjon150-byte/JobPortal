@@ -1,7 +1,33 @@
+"use client";
+
 import Link from "next/link";
+import axios from "axios";
 import Header from "../_components/Header";
+import { useEffect, useState } from "react";
+import { Job } from "../../types";
 
 const Page = () => {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await axios.get<typeof jobs>("http://localhost:4000/job");
+        setJobs(response.data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load jobs.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -42,41 +68,58 @@ const Page = () => {
         </div>
 
         <main className="md:col-span-2 flex flex-col gap-6">
-            <div className="flex justify-between">
-                <h2>Available Jobs</h2>
-               <p className="text-sm">6 positions</p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-xl font-semibold">Available Jobs</h2>
+            <p className="text-sm text-gray-500">{loading ? "Loading..." : `${jobs.length} positions`}</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow flex flex-col gap-3">
-            <h3 className="text-xl">Senior Frontend Engineer</h3>
-            <p className="text-gray-600">
-              We are looking for an experienced Frontend Engineer to join our
-              growing team. You will work on modern web applications using React
-              and TypeScript.
-            </p>
 
-            <div className="flex flex-wrap gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-100 rounded">Technology</span>
-              <span className="px-2 py-1 bg-gray-100 rounded">Full-time</span>
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-4">
+              {error}
             </div>
-            <div className="flex items-center gap-3">
-            <p className="text-gray-700">📍 San Francisco, CA</p>
-            <p className="text-gray-700">💰 $120,000 - $160,000</p>
+          )}
+
+          {loading ? (
+            <div className="grid gap-6">
+              {[1, 2].map((item) => (
+                <div key={item} className="bg-white p-6 rounded-lg shadow animate-pulse h-60"></div>
+              ))}
             </div>
-            <div className="text-gray-600 text-sm">
-              Requirements:
+          ) : jobs.length === 0 ? (
+            <div className="bg-white p-6 rounded-lg shadow text-center text-gray-500">
+              No jobs available at the moment.
             </div>
-            <div className="flex items-center gap-3 ml-2">
-                <button className="text-xs! rounded border p-1">React</button>
-                <button className="text-xs! rounded border p-1">TypeScript</button>
-                <button className="text-xs! rounded border p-1">5+ years experience</button>
-                <button className="text-xs! rounded border p-1">+1 more</button>
+          ) : (
+            <div className="space-y-6">
+              {jobs.map((job) => (
+                <div key={job.id} className="bg-white p-6 rounded-lg shadow flex flex-col gap-4">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-start">
+                    <div>
+                      <h3 className="text-xl font-semibold">{job.title}</h3>
+                      <p className="text-gray-500">{job.company}</p>
+                    </div>
+                    <div className="text-right text-sm text-gray-600">
+                      <p>{job.location}</p>
+                      <p>{job.salary}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-600">{job.description}</p>
+
+                  <div className="flex flex-wrap gap-2 text-sm">
+                    <span className="px-3 py-1 bg-gray-100 rounded">{job.category}</span>
+                    <span className="px-3 py-1 bg-gray-100 rounded">{job.jobType}</span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-3">
+                    <button className="bg-blue-600 w-100 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all">
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-            <Link href="/jobDetails">
-            <button className="bg-blue-600 w-100 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all">
-              View Details
-            </button>
-            </Link>
-          </div>
+          )}
         </main>
       </div>
     </div>
