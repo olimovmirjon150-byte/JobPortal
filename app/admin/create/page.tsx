@@ -197,9 +197,6 @@ const page = () => {
               />
             </div>
 
-            {error && <p className="text-red-600 text-sm">{error}</p>}
-            {success && <p className="text-green-600 text-sm">Job created successfully. Redirecting...</p>}
-
             {/* Buttons */}
             <div className="flex gap-4 pt-2">
               <button

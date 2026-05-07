@@ -110,11 +110,12 @@ const Page = () => {
                     <span className="px-3 py-1 bg-gray-100 rounded">{job.category}</span>
                     <span className="px-3 py-1 bg-gray-100 rounded">{job.jobType}</span>
                   </div>
-
                   <div className="flex flex-wrap gap-3">
+                    <Link href={`jobDetails/${job.id}`}>
                     <button className="bg-blue-600 w-100 text-white px-4 py-2 rounded hover:bg-blue-700 transition-all">
                       View Details
                     </button>
+                    </Link>
                   </div>
                 </div>
               ))}

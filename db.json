@@ -15,6 +15,17 @@
         "Experience with responsive design and UI best practices"
       ],
       "postedDate": "2026-05-07"
+    },
+    {
+      "title": "Web Disigner",
+      "company": "google",
+      "location": "USA, los santos",
+      "salary": "$1000 - $3000",
+      "category": "Design",
+      "jobType": "Contract",
+      "description": "we ned 2 strong designer for our new website !!!",
+      "requirements": "React, Next.js, TS, JS, Tailwind",
+      "id": "8DQf_ucz2_I"
     }
   ],
   "applications": [
