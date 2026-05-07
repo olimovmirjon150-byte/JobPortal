@@ -1,5 +1,5 @@
+import Header from "@/app/_components/Header";
 import Link from "next/link";
-import Header from "../_components/Header";
 
 const page = () => {
   return (
