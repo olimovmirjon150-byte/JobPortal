@@ -29,6 +29,12 @@ const Page = () => {
           <p className="text-gray-500 mt-4 ml-2">Category:</p>
           <select className="w-full border rounded-lg px-3 py-2">
             <option>All Categories</option>
+            <option>Technology</option>
+            <option>Marketing</option>
+            <option>Design</option>
+            <option>Sales</option>
+            <option>Finance</option>
+            <option>Other</option>
           </select>
           <button type="reset" className="w-full bg-blue-600 text-white py-2 rounded mt-4 hover:bg-blue-700 transition-all">
             Reset Filters
