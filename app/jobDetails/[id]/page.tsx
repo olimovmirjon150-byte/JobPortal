@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { Job } from "@/types";
+import { Application, Job } from "@/types";
 
 const page = () => {
   const params = useParams();
@@ -20,6 +20,11 @@ const page = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [applicantName, setApplicantName] = useState("");
+  const [applicantEmail, setApplicantEmail] = useState("");
+  const [applyLoading, setApplyLoading] = useState(false);
+  const [applyError, setApplyError] = useState<string | null>(null);
+  const [applySuccess, setApplySuccess] = useState<string | null>(null);
 
   useEffect(() => {
     getJobs();
@@ -38,6 +43,37 @@ const page = () => {
   };
 
   const selectedJob = jobs.find((job) => job.id === jobId);
+
+  const handleApply = async () => {
+    if (!selectedJob) return;
+    if (!applicantName.trim() || !applicantEmail.trim()) {
+      setApplyError("Name and email are required.");
+      setApplySuccess(null);
+      return;
+    }
+
+    try {
+      setApplyLoading(true);
+      setApplyError(null);
+      setApplySuccess(null);
+      await axios.post<Application>("http://localhost:4000/applications", {
+        id: Date.now().toString(),
+        name: applicantName,
+        email: applicantEmail,
+        jobId: selectedJob.id,
+        jobTitle: selectedJob.title,
+        company: selectedJob.company,
+        createdAt: new Date().toISOString(),
+      });
+      setApplySuccess("Application submitted successfully.");
+      setApplicantName("");
+      setApplicantEmail("");
+    } catch (err) {
+      setApplyError(err instanceof Error ? err.message : "Failed to submit application.");
+    } finally {
+      setApplyLoading(false);
+    }
+  };
 
   return (
     <section className="bg-gray-50 min-h-screen">
@@ -102,13 +138,34 @@ const page = () => {
                       <div>
                         <div>
                           <p className="mb-0">Full Name</p>
-                          <input className="w-100 form-control" type="text" placeholder="John Doe..." />
+                          <input
+                            value={applicantName}
+                            onChange={(event) => setApplicantName(event.target.value)}
+                            className="w-100 form-control"
+                            type="text"
+                            placeholder="John Doe..."
+                          />
                         </div>
                         <div>
                           <p className="mt-2 mb-0">Email</p>
-                          <input className="w-100 form-control" type="email" placeholder="john@exemple.com" />
+                          <input
+                            value={applicantEmail}
+                            onChange={(event) => setApplicantEmail(event.target.value)}
+                            className="w-100 form-control"
+                            type="email"
+                            placeholder="john@example.com"
+                          />
                         </div>
-                        <button className="w-100 bg-blue-600 text-white px-3 py-2 mt-3 rounded-md! transition-all hover:bg-blue-700!">Submit Application</button>
+                        {applyError && <p className="text-red-600 text-sm mt-3">{applyError}</p>}
+                        {applySuccess && <p className="text-green-600 text-sm mt-3">{applySuccess}</p>}
+                        <button
+                          type="button"
+                          disabled={applyLoading}
+                          onClick={handleApply}
+                          className="w-100 bg-blue-600 text-white px-3 py-2 mt-3 rounded-md! transition-all hover:bg-blue-700! disabled:opacity-50"
+                        >
+                          {applyLoading ? "Submitting..." : "Submit Application"}
+                        </button>
                       </div>
                     </DialogHeader>
                   </DialogContent>

@@ -10,10 +10,12 @@ export type Job = {
     requirements: string;
 };
 
-export type Aplication = {
+export type Application = {
     id: string;
     name: string;
     email: string;
     jobId: string;
+    jobTitle?: string;
+    company?: string;
     createdAt: string;
 };

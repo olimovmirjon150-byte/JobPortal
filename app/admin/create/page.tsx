@@ -5,6 +5,7 @@ import axios from "axios";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Job } from "../../../types";
+import AdminGuard from "@/app/admin/AdminGuard";
 
 const page = () => {
   const [title, setTitle] = useState("");
@@ -62,8 +63,9 @@ const page = () => {
   };
 
   return (
-    <section className="py-10 bg-gray-50 min-h-screen">
-      <div className="max-w-4xl mx-auto px-4">
+    <AdminGuard>
+      <section className="py-10 bg-gray-50 min-h-screen">
+        <div className="max-w-4xl mx-auto px-4">
         
         {/* Back */}
         <Link href="/admin/jobs">
@@ -231,6 +233,7 @@ const page = () => {
         </div>
       </div>
     </section>
+  </AdminGuard>
   );
 };
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Job } from "../../../types";
+import AdminGuard from "@/app/admin/AdminGuard";
 
 const page = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -38,8 +39,9 @@ const page = () => {
   };
 
   return (
-    <section className="py-10 bg-gray-50 min-h-screen">
-      <div className="max-w-6xl mx-auto px-4">
+    <AdminGuard>
+      <section className="py-10 bg-gray-50 min-h-screen">
+        <div className="max-w-6xl mx-auto px-4">
         
         {/* Title */}
         <h2 className="text-3xl font-bold text-gray-900">
@@ -113,6 +115,7 @@ const page = () => {
         </div>
       </div>
     </section>
+  </AdminGuard>
   );
 };
 

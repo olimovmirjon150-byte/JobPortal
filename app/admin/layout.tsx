@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function AdminLoyout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   return (
     <div className="flex">
     <aside className="w-64 bg-black text-white fixed h-full left-0 top-0 flex flex-col p-6 z-50">
@@ -37,11 +41,17 @@ export default function AdminLoyout({
         </div>
 
         {/* Logout tugmasi pastda */}
-        <Link href="/">
-          <button className="w-full bg-[#ff4d4d] hover:bg-red-600 text-white py-2 rounded-2 font-bold! transition! mt-auto1">
-            Logout
-          </button>
-        </Link>
+        <button
+          onClick={() => {
+            if (typeof window !== "undefined") {
+              localStorage.removeItem("jobPortalAdmin");
+            }
+            router.push("/admin/login");
+          }}
+          className="w-full bg-[#ff4d4d] hover:bg-red-600 text-white py-2 rounded-2 font-bold! transition! mt-auto1"
+        >
+          Logout
+        </button>
       </aside>
       <div className="ml-72 min-h-screen w-full bg-gray-100 p-10 overflow-y-auto">
         {children}

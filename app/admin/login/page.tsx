@@ -1,11 +1,32 @@
 "use client";
-import  Link  from "next/link";
-import { useState } from "react";
+import Link from "next/link";
+import { FormEvent, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const AdminFullPage = () => {
-  // Login formasi uchun oddiy state
+  const router = useRouter();
   const [email, setEmail] = useState("admin@jobportal.com");
   const [password, setPassword] = useState("admin123");
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("jobPortalAdmin") === "true") {
+      router.replace("/admin/jobs");
+    }
+  }, [router]);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setError(null);
+
+    if (email === "admin@jobportal.com" && password === "admin123") {
+      localStorage.setItem("jobPortalAdmin", "true");
+      router.push("/admin/jobs");
+      return;
+    }
+
+    setError("Incorrect email or password.");
+  };
 
   return (
     <div className="flex min-h-screen bg-[#f8f9fa]">
@@ -25,7 +46,7 @@ const AdminFullPage = () => {
 
         {/* Login Formasi Card */}
         <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 w-full max-w-lg">
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-gray-700! font-semibold mb-2">
                 Email
@@ -51,6 +72,8 @@ const AdminFullPage = () => {
                 className="w-full border border-gray-200 p-2 rounded-lg focus:ring-2! focus:ring-blue-500! outline-none! transition!"
               />
             </div>
+
+            {error && <p className="text-sm text-red-600">{error}</p>}
 
             <button className="w-full bg-blue-700 hover:bg-blue-900 text-white py-2 rounded-2 font-bold text-lg transition shadow-lg">
               Sign In
