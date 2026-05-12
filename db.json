@@ -46,6 +46,16 @@
       "jobTitle": "Senior Frontend Engineer",
       "company": "TechCorp",
       "createdAt": "2026-05-07T12:23:11.697Z"
+    },
+    {
+      "id": "GYc5DXeWjZ0",
+      "name": "jhgtgfrdee",
+      "email": "aaaaaaaa",
+      "jobId": "1",
+      "jobTitle": "Senior Frontend Engineer",
+      "company": "TechCorp",
+      "createdAt": "2026-05-12T10:36:54.567Z"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

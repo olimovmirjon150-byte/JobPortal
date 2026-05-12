@@ -28,9 +28,11 @@ const Hero = () => {
               placeholder="Search by job title, company, or keyword..."
               className="w-400 outline-none text-slate-700 bg-slate-50/50 p-2"
             />
+            <Link href="/jobs">
             <button className="w-full sm:w-auto bg-blue-500 hover:bg-blue-700! text-white py-2 px-6 font-medium transition-colors">
               Search
             </button>
+            </Link>
           </div>
         </div>
 
